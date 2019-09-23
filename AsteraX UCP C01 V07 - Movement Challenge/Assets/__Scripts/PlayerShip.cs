@@ -58,7 +58,15 @@ public class PlayerShip : MonoBehaviour
 
     void Fire()
     {
+        // Get direction of mouse.
+        Vector3 mPos = Input.mousePosition;
+        mPos.z = -Camera.main.transform.position.z;
+        Vector3 mPos3D = Camera.main.ScreenToWorldPoint(mPos);
 
+        // Instantiate a Bullet and set its direction.
+        GameObject go = Instantiate<GameObject>(bulletPrefab);
+        go.transform.position = transform.position;
+        go.transform.LookAt(mPos3D);
     }
 
     static public float MAX_SPEED
