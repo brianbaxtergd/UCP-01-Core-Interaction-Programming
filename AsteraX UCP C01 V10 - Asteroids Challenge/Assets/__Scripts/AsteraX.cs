@@ -1,4 +1,4 @@
-﻿#define DEBUG_AsteraX_LogMethods
+﻿//#define DEBUG_AsteraX_LogMethods
 
 using System.Collections;
 using System.Collections.Generic;

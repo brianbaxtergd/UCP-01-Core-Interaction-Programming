@@ -104,6 +104,41 @@ public class Asteroid : MonoBehaviour
         AsteraX.RemoveAsteroid(this);
     }
 
+    public void OnCollisionEnter(Collision coll)
+    {
+        // If this is the child of another Asteroid, pass this collision up the chain.
+        if (parentIsAsteroid)
+        {
+            parentAsteroid.OnCollisionEnter(coll);
+            return;
+        }
+
+        GameObject otherGO = coll.gameObject;
+
+        if (otherGO.tag == "Bullet" || otherGO.transform.root.gameObject.tag == "Player")
+        {
+            if (otherGO.tag == "Bullet")
+                Destroy(otherGO);
+
+            if (size > 1)
+            {
+                // Detach the children Asteroids.
+                Asteroid[] children = GetComponentsInChildren<Asteroid>();
+                for (int i = 0; i < children.Length; i++)
+                {
+                    if (children[i] == this || children[i].transform.parent != transform)
+                    {
+                        continue;
+                    }
+                    children[i].transform.SetParent(null, true);
+                    children[i].InitAsteroidParent();
+                }
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
     public void InitAsteroidParent()
     {
 #if DEBUG_Asteroid_OffscreenDebugLines
