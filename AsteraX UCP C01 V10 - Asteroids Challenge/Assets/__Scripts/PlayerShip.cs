@@ -84,4 +84,12 @@ public class PlayerShip : MonoBehaviour
             return S.shipSpeed;
         }
     }
+
+    static public Vector3 POSITION
+    {
+        get
+        {
+            return S.transform.position;
+        }
+    }
 }
