@@ -112,10 +112,10 @@ MonoBehaviour:
     y: 30
     width: 1904
     height: 931
-  m_MinSize: {x: 713, y: 494}
-  m_MaxSize: {x: 18008, y: 14044}
+  m_MinSize: {x: 713, y: 472}
+  m_MaxSize: {x: 18008, y: 14022}
   vertical: 0
-  controlID: 1888
+  controlID: 14
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 422}
   m_MaxSize: {x: 4002, y: 8022}
   vertical: 1
-  controlID: 1889
+  controlID: 15
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 484
     width: 936
     height: 447
-  m_MinSize: {x: 202, y: 222}
-  m_MaxSize: {x: 4002, y: 4022}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 15}
@@ -216,10 +216,10 @@ MonoBehaviour:
     y: 0
     width: 505
     height: 931
-  m_MinSize: {x: 234, y: 494}
-  m_MaxSize: {x: 10004, y: 14044}
+  m_MinSize: {x: 234, y: 472}
+  m_MaxSize: {x: 10004, y: 14022}
   vertical: 1
-  controlID: 1910
+  controlID: 59
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -417,9 +417,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -5.277596, y: -5.374392, z: 4.5527687}
+    m_Target: {x: 0, y: 0, z: -10}
     speed: 2
-    m_Value: {x: -5.277596, y: -5.374392, z: 4.5527687}
+    m_Value: {x: 0, y: 0, z: -10}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -450,11 +450,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.03330242, y: 0.008092694, z: -0.00026964155, w: -0.9994121}
     speed: 2
-    m_Value: {x: -0.034801513, y: 0.008092284, z: -0.00028178038, w: -0.99936146}
+    m_Value: {x: -0.033302434, y: 0.008092698, z: -0.00026964166, w: -0.99941254}
   m_Size:
-    m_Target: 47.30014
+    m_Target: 44.881588
     speed: 2
-    m_Value: 45.26329
+    m_Value: 42.948887
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -602,9 +602,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d8d6ffff
+      m_SelectedIDs: 74280000
       m_LastClickedID: 0
-      m_ExpandedIDs: 02e9ffff12e9ffff22e9ffff32e9ffff42e9ffff7efaffff74fbffff103900002c390000
+      m_ExpandedIDs: 74fbffff8c360000a0360000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -693,11 +693,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/__Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/__Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Mauldini\Desktop\Unity Projects\UCP 01 Core Interaction
     Programming\AsteraX UCP C01 V10 - Asteroids Challenge
@@ -705,8 +705,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 98310000
-    m_LastClickedID: 12696
+    m_SelectedIDs: e2300000
+    m_LastClickedID: 12514
     m_ExpandedIDs: 00000000fe2f0000e2300000983100009e3300008234000094340000fc340000d83500005e37000060370000623700006437000066370000683700006a3700006c3700006e37000070370000723700007437000076370000783700007a3700007c3700007e37000080370000823700008437000086370000883700008a3700008c3700008e37000090370000923700009437000096370000983700009a3700009c3700009e370000a037000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -735,7 +735,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 5c310000
     m_LastClickedID: 12636
-    m_ExpandedIDs: 00000000fe2f0000e2300000983100009e3300008234000094340000fc340000d83500005e37000060370000623700006437000066370000683700006a3700006c3700006e37000070370000723700007437000076370000783700007a3700007c3700007e37000080370000823700008437000086370000883700008a3700008c3700008e37000090370000923700009437000096370000983700009a3700009c3700009e370000a037000000ca9a3b
+    m_ExpandedIDs: 00000000fe2f0000e2300000983100009e3300008234000094340000fc340000d83500005e37000060370000623700006437000066370000683700006a3700006c3700006e37000070370000723700007437000076370000783700007a3700007c3700007e37000080370000823700008437000086370000883700008a3700008c3700008e37000090370000923700009437000096370000983700009a3700009c3700009e370000a0370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

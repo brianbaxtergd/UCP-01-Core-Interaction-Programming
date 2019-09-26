@@ -27,7 +27,19 @@ public class OffScreenWrapper : MonoBehaviour
         ScreenBounds bounds = other.GetComponent<ScreenBounds>();
         if (bounds == null)
         {
-            return;
+            // Check for runaway GameObjects using ExtraBounds child of ScreenBounds.
+            bounds = other.GetComponentInParent<ScreenBounds>();
+
+            if (bounds == null) // If bounds is still null, give up and return.
+                return;
+            else
+            {
+                // Move this GameObject closer to ScreenBounds edges, making use of the ComponentDivision extension in Vector3Extensions.
+                Vector3 pos = transform.position.ComponentDivide(other.transform.localScale);
+                pos.z = 0;
+                transform.position = pos;
+                Debug.LogWarning("OffscreenWrapper:OnTriggerExit() - Runaway object caught by ExtraBounds: " + gameObject.name);
+            }
         }
 
         ScreenWrap(bounds);
