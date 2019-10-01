@@ -11,6 +11,8 @@ public class AsteraX : MonoBehaviour
 
     static List<Asteroid>           ASTEROIDS;
     static List<Bullet>             BULLETS;
+    static int score = 0;
+    static int jumps;
     
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
@@ -40,7 +42,6 @@ public class AsteraX : MonoBehaviour
     [Header("Set in Inspector")]
     [Tooltip("This sets the AsteroidsScriptableObject to be used throughout the game.")]
     public AsteroidsScriptableObject asteroidsSO;
-
 
     private void Awake()
     {
@@ -120,7 +121,6 @@ public class AsteraX : MonoBehaviour
         }
     }
 
-
     static public AsteroidsScriptableObject AsteroidsSO
     {
         get
@@ -147,5 +147,4 @@ public class AsteraX : MonoBehaviour
             ASTEROIDS.Remove(asteroid);
         }
     }
-
 }

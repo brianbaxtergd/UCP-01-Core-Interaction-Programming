@@ -29,8 +29,17 @@ public class PlayerShip : MonoBehaviour
     [Header("Set in Inspector")]
     public float        shipSpeed = 10f;
     public GameObject   bulletPrefab;
+    [Tooltip("Amount of Jumps the Player has at the start of each game.")]
+    public int initialJumps;
+    [Tooltip("How many seconds to wait after death before a Jump (respawn) occurs.")]
+    public int timeBeforeJump;
+    [Tooltip("How many seconds to wait at Game Over screen before automatically restarting the game.")]
+    public int timeBeforeRestart;
 
-    Rigidbody           rigid;
+
+    Rigidbody rigid;
+    [HideInInspector]
+    int jumps;
 
 
     void Awake()
