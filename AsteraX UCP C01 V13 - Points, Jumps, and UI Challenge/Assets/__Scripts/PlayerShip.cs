@@ -3,9 +3,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(OffScreenWrapper))]
 public class PlayerShip : MonoBehaviour
 {
     // This is a somewhat protected private singleton for PlayerShip
@@ -32,14 +34,13 @@ public class PlayerShip : MonoBehaviour
     [Tooltip("Amount of Jumps the Player has at the start of each game.")]
     public int initialJumps;
     [Tooltip("How many seconds to wait after death before a Jump (respawn) occurs.")]
-    public int timeBeforeJump;
+    public float timeBeforeJump;
     [Tooltip("How many seconds to wait at Game Over screen before automatically restarting the game.")]
-    public int timeBeforeRestart;
+    public float timeBeforeRestart;
 
 
-    Rigidbody rigid;
-    [HideInInspector]
     int jumps;
+    Rigidbody rigid;
 
 
     void Awake()
@@ -48,6 +49,10 @@ public class PlayerShip : MonoBehaviour
 
         // NOTE: We don't need to check whether or not rigid is null because of [RequireComponent()] above
         rigid = GetComponent<Rigidbody>();
+
+        // Set jumps and update UI.
+        jumps = initialJumps;
+        GameObject.Find("JumpsText").GetComponent<Text>().text = jumps + " Jumps";
     }
 
 
@@ -85,6 +90,35 @@ public class PlayerShip : MonoBehaviour
         GameObject go = Instantiate<GameObject>(bulletPrefab);
         go.transform.position = transform.position;
         go.transform.LookAt(mPos3D);
+    }
+
+    public void PlayerHit()
+    {
+        if (jumps > 0)
+        {
+            // Jump (respawn).
+            StartCoroutine(JumpCoroutine());
+        }
+        else
+        {
+            // Game over.
+        }
+    }
+
+    IEnumerator JumpCoroutine()
+    {
+        // Decrement jumps.
+        jumps -= 1;
+        // Update UI.
+        GameObject.Find("JumpsText").GetComponent<Text>().text = jumps + " Jumps";
+        // Move player far off-screen.
+        GetComponent<OffScreenWrapper>().enabled = false;
+        rigid.MovePosition(new Vector3(1000, 1000));
+        // Wait.
+        yield return new WaitForSeconds(timeBeforeJump);
+        // Respawn player.
+        GetComponent<OffScreenWrapper>().enabled = true;
+        rigid.MovePosition(ScreenBounds.RANDOM_ON_SCREEN_LOC);
     }
 
     static public float MAX_SPEED

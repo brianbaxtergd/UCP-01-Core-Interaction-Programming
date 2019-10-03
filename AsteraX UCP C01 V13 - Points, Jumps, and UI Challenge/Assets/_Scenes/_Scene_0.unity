@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 1044257106}
   - component: {fileID: 1044257108}
   - component: {fileID: 1044257107}
+  - component: {fileID: 1044257109}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -572,6 +573,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044257105}
   m_CullTransparentMesh: 0
+--- !u!114 &1044257109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044257105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d43d4204515d3408831ee71e0179cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1063172399
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,9 +854,9 @@ MonoBehaviour:
   shipSpeed: 10
   bulletPrefab: {fileID: 1657914042213664, guid: 0e9c239fd33d94404b671bc44ab4f6b4,
     type: 3}
-  initialJumps: 0
-  timeBeforeJump: 0
-  timeBeforeRestart: 0
+  initialJumps: 3
+  timeBeforeJump: 2
+  timeBeforeRestart: 4
 --- !u!114 &1199415305
 MonoBehaviour:
   m_ObjectHideFlags: 0

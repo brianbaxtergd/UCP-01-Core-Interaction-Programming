@@ -11,11 +11,11 @@ public class AsteraX : MonoBehaviour
 
     static List<Asteroid>           ASTEROIDS;
     static List<Bullet>             BULLETS;
-    static int score = 0;
-    static int jumps;
     
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
+
+    ScoreText scoreText;
 
     // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple 
     //  values be selected simultaneously (similar to how Physics Layers are selected).
@@ -50,6 +50,8 @@ public class AsteraX : MonoBehaviour
 #endif
 
         S = this;
+
+        scoreText = GameObject.Find("ScoreText").GetComponent<ScoreText>();
     }
 
 
@@ -145,6 +147,16 @@ public class AsteraX : MonoBehaviour
         if (ASTEROIDS.IndexOf(asteroid) != -1)
         {
             ASTEROIDS.Remove(asteroid);
+        }
+    }
+
+    static public void AddScore(int asteroidSize)
+    {
+        if (asteroidSize > 3 || asteroidSize < 1)
+            Debug.Log("AsteraX:AddScore() arg is OOR.");
+        else
+        {
+            S.scoreText.AddScore(AsteroidsSO.pointsForAsteroidSize[asteroidSize]);
         }
     }
 }

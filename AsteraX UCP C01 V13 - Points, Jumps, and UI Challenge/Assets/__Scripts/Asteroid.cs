@@ -192,7 +192,14 @@ public class Asteroid : MonoBehaviour
         {
             if (otherGO.tag == "Bullet")
             {
+                // Increment player score.
+                AsteraX.AddScore(size);
+                // Destroy colliding bullet.
                 Destroy(otherGO);
+            }
+            else if (otherGO.tag == "Player")
+            {
+                GameObject.Find("PlayerShip").GetComponent<PlayerShip>().PlayerHit();
             }
 
             if (size > 1)
