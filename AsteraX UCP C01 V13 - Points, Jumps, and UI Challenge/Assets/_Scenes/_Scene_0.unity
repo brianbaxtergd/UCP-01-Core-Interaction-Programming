@@ -427,6 +427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidsSO: {fileID: 11400000, guid: 2b6cec6ca77fe4d49968b9db06f6e657, type: 2}
+  timeBeforeRestart: 4
+  gameOverPanel: {fileID: 1076891240}
 --- !u!1 &977542034
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,6 +689,7 @@ GameObject:
   - component: {fileID: 1076891237}
   - component: {fileID: 1076891239}
   - component: {fileID: 1076891238}
+  - component: {fileID: 1076891240}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -753,6 +756,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076891236}
   m_CullTransparentMesh: 0
+--- !u!114 &1076891240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076891236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd20f4e11140a44e88007c4fe21ff22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1044257109}
+  finalLevelText: {fileID: 1893778153}
+  finalScoreText: {fileID: 60603518}
 --- !u!4 &1116934500 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4149291233437366, guid: 2a4573fd70efa094d84f72d5723ef9a6,
@@ -856,7 +874,6 @@ MonoBehaviour:
     type: 3}
   initialJumps: 3
   timeBeforeJump: 2
-  timeBeforeRestart: 4
 --- !u!114 &1199415305
 MonoBehaviour:
   m_ObjectHideFlags: 0

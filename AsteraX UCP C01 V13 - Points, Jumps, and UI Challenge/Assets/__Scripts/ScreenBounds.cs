@@ -103,6 +103,17 @@ public class ScreenBounds : MonoBehaviour
         }
     }
 
+    // Similar to RANDOM_ON_SCREEN_LOC, but this returns a random position furthur inward from the game area perimeter (keeps HUD elements from blocking view of play respawn).
+    static public Vector3 RANDOM_ON_SCREEN_LOC_FOR_SAFE_JUMPS
+    {
+        get
+        {
+            Vector3 min = S.boxColl.bounds.min + S.boxColl.bounds.size * 0.2f;
+            Vector3 max = S.boxColl.bounds.max - S.boxColl.bounds.size * 0.2f;
+            Vector3 loc = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0);
+            return loc;
+        }
+    }
 
     static public Bounds BOUNDS
     {

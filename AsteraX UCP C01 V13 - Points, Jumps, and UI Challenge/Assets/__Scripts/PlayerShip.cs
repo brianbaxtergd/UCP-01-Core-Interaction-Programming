@@ -35,8 +35,6 @@ public class PlayerShip : MonoBehaviour
     public int initialJumps;
     [Tooltip("How many seconds to wait after death before a Jump (respawn) occurs.")]
     public float timeBeforeJump;
-    [Tooltip("How many seconds to wait at Game Over screen before automatically restarting the game.")]
-    public float timeBeforeRestart;
 
 
     int jumps;
@@ -78,6 +76,11 @@ public class PlayerShip : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        // Trigger game-over state.
+        AsteraX.GameOver();
+    }
 
     void Fire()
     {
@@ -101,7 +104,8 @@ public class PlayerShip : MonoBehaviour
         }
         else
         {
-            // Game over.
+            // Destroy instance of PlayerShip.
+            Destroy(gameObject);
         }
     }
 
@@ -118,7 +122,7 @@ public class PlayerShip : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeJump);
         // Respawn player.
         GetComponent<OffScreenWrapper>().enabled = true;
-        rigid.MovePosition(ScreenBounds.RANDOM_ON_SCREEN_LOC);
+        rigid.MovePosition(AsteraX.FindSafeJump());
     }
 
     static public float MAX_SPEED

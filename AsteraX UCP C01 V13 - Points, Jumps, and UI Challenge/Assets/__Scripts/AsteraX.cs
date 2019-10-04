@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AsteraX : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class AsteraX : MonoBehaviour
     
     const float MIN_ASTEROID_DIST_FROM_PLAYER_SHIP = 5;
 
-
     ScoreText scoreText;
+    int level;
 
     // System.Flags changes how eGameStates are viewed in the Inspector and lets multiple 
     //  values be selected simultaneously (similar to how Physics Layers are selected).
@@ -38,10 +39,17 @@ public class AsteraX : MonoBehaviour
         all = 0xFFFFFFF // 11111111111111111111111111111111
     }
 
+    eGameState gameState = eGameState.level;
+
 
     [Header("Set in Inspector")]
     [Tooltip("This sets the AsteroidsScriptableObject to be used throughout the game.")]
     public AsteroidsScriptableObject asteroidsSO;
+    [Tooltip("How many seconds to wait at Game Over screen before automatically restarting the game.")]
+    public float timeBeforeRestart;
+    public GameOverPanelScript gameOverPanel;
+
+
 
     private void Awake()
     {
@@ -52,6 +60,8 @@ public class AsteraX : MonoBehaviour
         S = this;
 
         scoreText = GameObject.Find("ScoreText").GetComponent<ScoreText>();
+
+        level = 1;
     }
 
 
@@ -157,6 +167,54 @@ public class AsteraX : MonoBehaviour
         else
         {
             S.scoreText.AddScore(AsteroidsSO.pointsForAsteroidSize[asteroidSize]);
+        }
+    }
+
+    static public Vector3 FindSafeJump()
+    {
+        float dist = 1000f;
+        Vector3 safeJumpPos;
+        int loopLimit = 1000;
+        do
+        {
+            loopLimit -= 1;
+            // Get a random position within the game screen.
+            safeJumpPos = ScreenBounds.RANDOM_ON_SCREEN_LOC_FOR_SAFE_JUMPS;
+            // Compare position to all Asteroid instances.
+            for (int i = 0; i < ASTEROIDS.Count; i++)
+            {
+                float curDist = Vector3.Distance(safeJumpPos, ASTEROIDS[i].transform.position);
+                // If the current distance check is less than the previous distance check, update dist value.
+                if (curDist < dist)
+                    dist = curDist;
+            }
+        }
+        while (dist < 3 && loopLimit > 0); // Continue looping until random position is at least 3 units away from all Asteroid instances.
+
+        return safeJumpPos;
+    }
+
+    static public void GameOver()
+    {
+        S.gameState = eGameState.gameOver;
+        S.gameOverPanel.gameObject.SetActive(true);
+        S.Invoke("ReloadScene", S.timeBeforeRestart);
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    static public int LEVEL
+    {
+        get
+        {
+            return S.level;
+        }
+        set
+        {
+            S.level = value;
         }
     }
 }

@@ -202,6 +202,7 @@ public class Asteroid : MonoBehaviour
                 GameObject.Find("PlayerShip").GetComponent<PlayerShip>().PlayerHit();
             }
 
+            immune = true; // Keeps size 1 Asteroids from decrementing Jump twice on collision w/ player.
             if (size > 1)
             {
                 // Detach the children Asteroids
